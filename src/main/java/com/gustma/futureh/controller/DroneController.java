@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
  * class DroneController.
  */
 @RestController
-@RequestMapping(value = "/drone", consumes = "application/json", produces = "application/json")
+@RequestMapping(value = "/drone", produces = "application/json")
 public class DroneController {
   
   @Autowired
   private DroneService service;
   
-  @PostMapping()
+  @PostMapping(consumes = "application/json")
   public ResponseEntity<?> create(@Valid @RequestBody DroneDto drone) {
     service.create(drone);
     return ResponseEntity.status(200).build();
@@ -34,7 +35,7 @@ public class DroneController {
   /**
    * update. 
    */
-  @PutMapping("/{id}")
+  @PutMapping(value = "/{id}", consumes = "application/json")
   public ResponseEntity<?> update(@Valid @RequestBody DroneDto drone,
       @PathVariable("id") Integer id) {
     if (service.update(id, drone)) {
@@ -43,8 +44,22 @@ public class DroneController {
     return ResponseEntity.status(404).build();
   }
   
+  /**
+   * get.
+   */
   @GetMapping()
   public ResponseEntity<List<Drone>> get() {
     return ResponseEntity.status(200).body(service.get());
+  }
+  
+  /**
+   * delete.
+   */
+  @DeleteMapping("/{id}")
+  public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+    if (service.delete(id)) {
+      return ResponseEntity.status(200).build();
+    }
+    return ResponseEntity.status(404).build();
   }
 }

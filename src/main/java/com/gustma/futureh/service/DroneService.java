@@ -41,7 +41,22 @@ public class DroneService {
   }
   
   
+  /**
+   * get.
+   */
   public List<Drone> get() {
     return repo.findAll();
+  }
+  
+  /**
+   * delete.
+   */
+  public boolean delete(Integer id) {
+    Optional<Drone> findDrone = repo.findById(id);
+    if (findDrone.isEmpty()) {
+      return false;
+    }
+    repo.deleteById(id);
+    return true;
   }
 }
