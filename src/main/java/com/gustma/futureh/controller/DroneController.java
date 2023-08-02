@@ -1,10 +1,13 @@
 package com.gustma.futureh.controller;
 
 import com.gustma.futureh.dto.DroneDto;
+import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.service.DroneService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,5 +41,10 @@ public class DroneController {
       return ResponseEntity.status(200).build();
     }
     return ResponseEntity.status(404).build();
+  }
+  
+  @GetMapping()
+  public ResponseEntity<List<Drone>> get() {
+    return ResponseEntity.status(200).body(service.get());
   }
 }

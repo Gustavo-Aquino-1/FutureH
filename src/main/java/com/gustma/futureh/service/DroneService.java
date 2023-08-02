@@ -3,6 +3,7 @@ package com.gustma.futureh.service;
 import com.gustma.futureh.dto.DroneDto;
 import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.repository.DroneRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,10 @@ public class DroneService {
     attDrone.setModel(drone.getModel());
     repo.save(attDrone);
     return true;
+  }
+  
+  
+  public List<Drone> get() {
+    return repo.findAll();
   }
 }
