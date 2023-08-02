@@ -1,9 +1,13 @@
 package com.gustma.futureh.model;
 
+import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * class Delivery.
@@ -14,5 +18,53 @@ public class Delivery {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   
+  private String video;
   
+  @Column(name = "delivery_date")
+  private LocalDateTime deliveryDate;
+  
+  @ManyToOne
+  @JoinColumn(name = "drone_id")
+  private Drone drone;
+
+  /**
+   * constructor Delivery.
+   */
+  public Delivery(String video, Drone drone) {
+    this.drone = drone;
+    this.video = video;
+    this.deliveryDate = LocalDateTime.now();
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getVideo() {
+    return video;
+  }
+
+  public void setVideo(String video) {
+    this.video = video;
+  }
+
+  public LocalDateTime getDeliveryDate() {
+    return deliveryDate;
+  }
+
+  public void setDeliveryDate(LocalDateTime deliveryDate) {
+    this.deliveryDate = deliveryDate;
+  }
+
+  public Drone getDrone() {
+    return drone;
+  }
+
+  public void setDrone(Drone drone) {
+    this.drone = drone;
+  }
 }

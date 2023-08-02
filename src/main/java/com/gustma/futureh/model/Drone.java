@@ -2,6 +2,7 @@ package com.gustma.futureh.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Drone {
   
   private String model;
   
-  @OneToMany
+  @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Delivery> deliveries = new ArrayList<Delivery>();
 
   public Drone() {}
@@ -42,5 +43,9 @@ public class Drone {
 
   public void setModel(String model) {
     this.model = model;
+  }
+
+  public List<Delivery> getDeliveries() {
+    return deliveries;
   }
 }
