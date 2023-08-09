@@ -29,7 +29,7 @@ public class DroneController {
   @PostMapping(consumes = "application/json")
   public ResponseEntity<?> create(@Valid @RequestBody DroneDto drone) {
     service.create(drone);
-    return ResponseEntity.status(200).build();
+    return ResponseEntity.status(201).build();
   }
   
   /**
