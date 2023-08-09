@@ -70,6 +70,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+			    <groupId>io.rest-assured</groupId>
+			    <artifactId>rest-assured</artifactId>
+			    <version>4.4.0</version> <!-- Verifique a versão mais recente no Maven Central -->
+			    <scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

@@ -1,6 +1,7 @@
 package com.gustma.futureh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,8 @@ public class Delivery {
   
   @ManyToOne
   @JoinColumn(name = "drone_id")
+  @JsonIgnoreProperties("deliveries") 
+  // /\ funciona como o exclude do sequelize, ele retira aquele campo da resposta do banco de dados.
   private Drone drone;
   
   public Delivery() {}

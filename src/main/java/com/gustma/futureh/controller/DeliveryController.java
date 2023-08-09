@@ -2,6 +2,7 @@ package com.gustma.futureh.controller;
 
 import com.gustma.futureh.dto.DeliveryDto;
 import com.gustma.futureh.dto.DroneDto;
+import com.gustma.futureh.dto.VideoDto;
 import com.gustma.futureh.model.Delivery;
 import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.service.DeliveryService;
@@ -65,5 +66,27 @@ public class DeliveryController {
       return ResponseEntity.status(200).build();
     }
     return ResponseEntity.status(404).build();
+  }
+  
+  /**
+   * addVideo.
+   */
+  @PostMapping("/add/video/{id}")
+  public ResponseEntity<?> addVideo(@Valid @RequestBody VideoDto video, 
+      @PathVariable("id") Integer id) {
+    if (service.addVideo(video.getVideo(), id)) {
+      return ResponseEntity.status(200).build();
+    }   
+    return ResponseEntity.status(404).build();
+  }
+  
+  @GetMapping("/videos")
+  public ResponseEntity<List<VideoDto>> getVideos() {
+    return ResponseEntity.status(200).body(service.getVideos());
+  }
+  
+  @GetMapping("/download/video/{id}")
+  public ResponseEntity<VideoDto> downloadVideo(@PathVariable("id") Integer id) {
+    return ResponseEntity.status(200).body(service.downloadVideo(id));
   }
 }

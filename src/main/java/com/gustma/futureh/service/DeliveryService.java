@@ -2,6 +2,7 @@ package com.gustma.futureh.service;
 
 import com.gustma.futureh.dto.DeliveryDto;
 import com.gustma.futureh.dto.DroneDto;
+import com.gustma.futureh.dto.VideoDto;
 import com.gustma.futureh.model.Delivery;
 import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.repository.DeliveryRepository;
@@ -79,5 +80,42 @@ public class DeliveryService {
       return true;
     }
     return false;
-  }  
+  }
+  
+  /**
+   * addVideo.
+   */
+  public boolean addVideo(String video, Integer id) {
+    if (repo.existsById(id)) {
+      Delivery delivery = repo.findById(id).get();
+      delivery.setVideo(video);
+      repo.save(delivery);
+      return true;
+    }
+    return false;
+  }
+  
+  /**
+   * getVideos.
+   */
+  public List<VideoDto> getVideos() {
+    List<Delivery> deliveries = repo.findAll();
+    List<VideoDto> videos = new ArrayList<VideoDto>();
+    for (Delivery d : deliveries) {
+      if (d.getVideo() != null) {
+        videos.add(new VideoDto(d.getVideo()));
+      }
+    }
+    return videos;
+  }
+  
+  /**
+   * downloadVideo.
+   */
+  public VideoDto downloadVideo(Integer id) {
+    if (repo.existsById(id)) {
+      return new VideoDto(repo.findById(id).get().getVideo());
+    }
+    return new VideoDto();
+  }
 }
