@@ -114,7 +114,8 @@ public class DeliveryService {
    */
   public VideoDto downloadVideo(Integer id) {
     if (repo.existsById(id)) {
-      return new VideoDto(repo.findById(id).get().getVideo());
+      String video = repo.findById(id).get().getVideo();
+      return new VideoDto(video);
     }
     return new VideoDto();
   }

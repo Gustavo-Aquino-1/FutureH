@@ -31,9 +31,15 @@ public class DeliveryController {
   @Autowired
   private DeliveryService service;
   
+  /**
+   * create.
+   */
   @PostMapping(consumes = "application/json")
   public ResponseEntity<?> create(@Valid @RequestBody DeliveryDto delivery) {
-    service.create(delivery);
+    boolean result = service.create(delivery);
+    if (!result) {
+      return ResponseEntity.status(404).body("drone not found");
+    }
     return ResponseEntity.status(201).build();
   }
   
