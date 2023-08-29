@@ -34,4 +34,64 @@ public class DeliveryControllerTest {
     mockMvc.perform(get("/delivery"))
         .andExpect(status().isOk());
   }
+  
+  @Test
+  public void testCreateDelivery() throws Exception {
+    String delivery = "{\"droneId\": \"1\"}";
+    mockMvc.perform(post("/delivery")
+        .contentType("application/json")
+        .content(delivery))
+        .andExpect(status().isCreated());
+  }
+  
+  @Test
+  public void testCreateDeliveryFail() throws Exception {
+    String delivery = "{\"droneId\": \"abc\"}";
+    mockMvc.perform(post("/delivery")
+        .contentType("application/json")
+        .content(delivery))
+        .andExpect(status().isBadRequest());
+  }
+  
+  @Test
+  public void testUpdateDeliveryFail() throws Exception {
+    String delivery = "{\"droneId\": \"100\"}";
+    mockMvc.perform(post("/delivery")
+        .contentType("application/json")
+        .content(delivery))
+        .andExpect(status().isCreated());
+    
+    mockMvc.perform(put("/delivery/100")
+        .contentType("application/json")
+        .content(delivery))
+        .andExpect(status().isNotFound());
+  }
+  
+  @Test
+  public void testDeleteDeliveryFail() throws Exception {
+    String delivery = "{\"droneId\": \"100\"}";
+    mockMvc.perform(post("/delivery")
+        .contentType("application/json")
+        .content(delivery))
+        .andExpect(status().isCreated());
+    
+    mockMvc.perform(delete("/delivery/100"))
+        .andExpect(status().isNotFound());
+  }
+  
+  
+  @Test
+  public void testAddVideoFail() throws Exception {
+    String video = "{\"video\": \"src/videos/video.mp4\"}";
+    mockMvc.perform(post("/delivery/add/video/100")
+        .contentType("application/json")
+        .content(video))
+        .andExpect(status().isNotFound());
+  }
+  
+  @Test
+  public void testGetVideo() throws Exception {
+    mockMvc.perform(get("/delivery/videos"))
+        .andExpect(status().isOk());
+  }
 }

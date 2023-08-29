@@ -34,7 +34,7 @@ public class DeliveryController {
   @PostMapping(consumes = "application/json")
   public ResponseEntity<?> create(@Valid @RequestBody DeliveryDto delivery) {
     service.create(delivery);
-    return ResponseEntity.status(200).build();
+    return ResponseEntity.status(201).build();
   }
   
   /**
