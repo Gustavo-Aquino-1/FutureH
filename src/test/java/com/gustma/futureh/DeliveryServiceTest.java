@@ -23,31 +23,31 @@ public class DeliveryServiceTest {
   
   @Test
   public void testCreateDeliveryFail() {
-    boolean result = service.create(new DeliveryDto("src/main/viode.mp4", 1));
+    boolean result = service.create(new DeliveryDto("src/main/viode.mp4", 1, "00000000", 2));
     assertFalse(result);
   }
   
   @Test
   public void testCreateDelivery() {
-    boolean result = service.create(new DeliveryDto("src/main/viode.mp4", 5));
+    boolean result = service.create(new DeliveryDto("src/main/viode.mp4", 5, "00000000", 2));
     assertTrue(result);
   }
   
   @Test
   public void testUpdateDeliveryFail() {
-    boolean result = service.update(1, new DeliveryDto("src/main/viode.mp4", 5));
+    boolean result = service.update(1, new DeliveryDto("src/main/viode.mp4", 5, "00000000", 2));
     assertFalse(result);
   }
   
   @Test
   public void testUpdateDeliveryFailDroneNoExists() {
-    boolean result = service.update(5, new DeliveryDto("src/main/viode.mp4", 1));
+    boolean result = service.update(5, new DeliveryDto("src/main/viode.mp4", 1, "00000000", 2));
     assertFalse(result);
   }
   
   @Test
   public void testUpdateDelivery() {
-    boolean result = service.update(5, new DeliveryDto("src/main/viode.mp4", 5));
+    boolean result = service.update(5, new DeliveryDto("src/main/viode.mp4", 5, "00000000", 2));
     assertTrue(result);
   }
   

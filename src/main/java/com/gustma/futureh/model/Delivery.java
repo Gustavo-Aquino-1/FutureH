@@ -31,14 +31,21 @@ public class Delivery {
   // /\ funciona como o exclude do sequelize, ele retira aquele campo da resposta do banco de dados.
   private Drone drone;
   
+  private String deliveryCep;
+  
+  private Integer deliveryNumber;
+  
   public Delivery() {}
 
   /**
    * constructor Delivery.
    */
-  public Delivery(String video, Drone drone) {
+  public Delivery(String video, Drone drone, String deliveryCep, Integer deliveryNumber) {
     this.drone = drone;
     this.video = video;
+    this.deliveryCep = deliveryCep;
+    this.deliveryNumber = deliveryNumber;
+   
   }
 
   public Integer getId() {
@@ -73,6 +80,22 @@ public class Delivery {
     this.drone = drone;
   }
   
+  public String getDeliveryCep() {
+    return deliveryCep;
+  }
+
+  public void setDeliveryCep(String deliveryCep) {
+    this.deliveryCep = deliveryCep;
+  }
+
+  public Integer getDeliveryNumber() {
+    return deliveryNumber;
+  }
+
+  public void setDeliveryNumber(Integer deliveryNumber) {
+    this.deliveryNumber = deliveryNumber;
+  }
+
   @PrePersist
   protected void onCreate() {
     deliveryDate = LocalDateTime.now();

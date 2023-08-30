@@ -125,7 +125,7 @@ public class DeliveryRepositoryMock implements DeliveryRepository {
     if (id > 1) {
       Drone drone = new Drone();
       drone.setId(5);
-      Delivery delivery = new Delivery("/src/main/video.mp4", drone);
+      Delivery delivery = new Delivery("/src/main/video.mp4", drone, "00000000", 2);
       delivery.setId(5);
       return Optional.of(delivery);
     }

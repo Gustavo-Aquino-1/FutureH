@@ -37,6 +37,8 @@ public class DeliveryService {
     }
     Delivery newDelivery = new Delivery();
     newDelivery.setVideo(delivery.getVideo());
+    newDelivery.setDeliveryCep(delivery.getCep());
+    newDelivery.setDeliveryNumber(delivery.getNumber());
     Drone findDrone = drone.get();
     newDelivery.setDrone(findDrone);
     findDrone.addDevilery(newDelivery);
@@ -53,7 +55,6 @@ public class DeliveryService {
       return false;
     }
     Delivery attDelivery = repo.findById(id).get();
-    attDelivery.setVideo(delivery.getVideo());
     if (delivery.getDroneId() != attDelivery.getDrone().getId()) {
       if (repoDrone.existsById(delivery.getDroneId())) {
         Drone newDrone = repoDrone.findById(delivery.getDroneId()).get();
