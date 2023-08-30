@@ -29,12 +29,14 @@ Exemplo de retorno:
 [
     {
         "id": 1,
-        "model": "TCR-352",
+        "model": "KPC-356",
+        "latitude": "-23.550520",
+        "longitude": "-46.633308",
         "deliveries": [
             {
                 "id": 1,
                 "video": "src/main/video.mp4",
-                "deliveryDate": "2023-08-30T15:40:35",
+                "deliveryDate": "2023-08-30T19:40:54",
                 "deliveryCep": "03859078",
                 "deliveryNumber": 258
             }
@@ -55,7 +57,9 @@ Exemplo corpo da requisição:
 
 ```
 {
-    "model": "KPC-356"
+    "model": "KPC-356",
+    "latitude": "-23.550520",
+    "longitude": "-46.633308"
 }
 ```
 
@@ -77,7 +81,9 @@ Exemplo corpo da requisição:
 
 ```
 {
-    "model": "DDL-142"
+    "model": "DDL-142",
+    "latitude": "-12.90937",
+    "longitude": "-15.74628"
 }
 ```
 
@@ -133,7 +139,9 @@ Exemplo de retorno:
         "deliveryDate": "2023-08-30T17:20:53",
         "drone": {
             "id": 1,
-            "model": "DDL-142"
+            "model": "DDL-142",
+            "latitude": "-12.90937",
+            "longitude": "-15.74628",
         },
         "deliveryCep": "03859078",
         "deliveryNumber": 258
