@@ -18,11 +18,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DeliveryService {
-  @Autowired
   private DeliveryRepository repo;
   
-  @Autowired
   private DroneRepository repoDrone;
+
+  @Autowired
+  public DeliveryService(DeliveryRepository repo, DroneRepository repoDrone) {
+    this.repo = repo;
+    this.repoDrone = repoDrone; 
+  }
   
   /**
    * create.
@@ -45,7 +49,7 @@ public class DeliveryService {
   /**
    * update. 
    */
-  public boolean update(Integer id, DeliveryDto delivery) { // sabe muito.
+  public boolean update(Integer id, DeliveryDto delivery) { // sabe muito d evap.
     if (!repo.existsById(id)) {
       return false;
     }

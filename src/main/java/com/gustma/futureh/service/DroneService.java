@@ -13,16 +13,21 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DroneService {
-  @Autowired
   private DroneRepository repo;
+  
+  @Autowired
+  public DroneService(DroneRepository repo) {
+    this.repo = repo;
+  }
   
   /**
    * create.
    */
-  public void create(DroneDto drone) {
+  public boolean create(DroneDto drone) {
     Drone newDrone = new Drone();
     newDrone.setModel(drone.getModel());
     repo.save(newDrone);
+    return true;
   }
   
   

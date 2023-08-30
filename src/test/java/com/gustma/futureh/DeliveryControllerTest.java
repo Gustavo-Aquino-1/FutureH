@@ -56,10 +56,6 @@ public class DeliveryControllerTest {
   @Test
   public void testUpdateDeliveryFail() throws Exception {
     String delivery = "{\"droneId\": \"100\"}";
-    mockMvc.perform(post("/delivery")
-        .contentType("application/json")
-        .content(delivery))
-        .andExpect(status().isCreated());
     
     mockMvc.perform(put("/delivery/100")
         .contentType("application/json")
@@ -68,14 +64,8 @@ public class DeliveryControllerTest {
   }
   
   @Test
-  public void testDeleteDeliveryFail() throws Exception {
-    String delivery = "{\"droneId\": \"100\"}";
-    mockMvc.perform(post("/delivery")
-        .contentType("application/json")
-        .content(delivery))
-        .andExpect(status().isCreated());
-    
-    mockMvc.perform(delete("/delivery/100"))
+  public void testDeleteDeliveryFail() throws Exception {    
+    mockMvc.perform(delete("/delivery/1000"))
         .andExpect(status().isNotFound());
   }
   
@@ -92,6 +82,12 @@ public class DeliveryControllerTest {
   @Test
   public void testGetVideo() throws Exception {
     mockMvc.perform(get("/delivery/videos"))
+        .andExpect(status().isOk());
+  }
+  
+  @Test
+  public void testDownloadVideo() throws Exception {
+    mockMvc.perform(get("/delivery/download/video/1"))
         .andExpect(status().isOk());
   }
 }
