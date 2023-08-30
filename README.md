@@ -231,6 +231,14 @@ Retorno: status 200  (ok)
 <hr />
 <br />
 
+# Testando a aplicação:
+
+```
+mvn test
+```
+<hr />
+<br />
+
 # Tecnologias Utlizadas 💻
 
 - Java
