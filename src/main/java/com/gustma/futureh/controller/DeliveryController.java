@@ -1,15 +1,11 @@
 package com.gustma.futureh.controller;
 
 import com.gustma.futureh.dto.DeliveryDto;
-import com.gustma.futureh.dto.DroneDto;
 import com.gustma.futureh.dto.VideoDto;
 import com.gustma.futureh.model.Delivery;
-import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.service.DeliveryService;
-import com.gustma.futureh.service.DroneService;
 import java.util.List;
 import javax.validation.Valid;
-import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

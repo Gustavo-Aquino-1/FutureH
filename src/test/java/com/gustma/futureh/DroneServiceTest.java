@@ -3,13 +3,13 @@ package com.gustma.futureh;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.gustma.futureh.dto.DroneDto;
 import com.gustma.futureh.mock.DroneRepositoryMock;
 import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.service.DroneService;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 /**
  * class DroneServiceTest.

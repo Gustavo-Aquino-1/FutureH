@@ -3,18 +3,15 @@ package com.gustma.futureh;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.gustma.futureh.dto.DeliveryDto;
-import com.gustma.futureh.dto.DroneDto;
 import com.gustma.futureh.dto.VideoDto;
 import com.gustma.futureh.mock.DeliveryRepositoryMock;
 import com.gustma.futureh.mock.DroneRepositoryMock;
 import com.gustma.futureh.model.Delivery;
-import com.gustma.futureh.model.Drone;
 import com.gustma.futureh.service.DeliveryService;
-import com.gustma.futureh.service.DroneService;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * class DeliveryServiceTest.

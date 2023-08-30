@@ -63,7 +63,6 @@ public class DeliveryRepositoryMock implements DeliveryRepository {
   @Override
   public void deleteAllInBatch(Iterable<Delivery> entities) {
     // TODO Auto-generated method stub
-    
   }
 
   @Override

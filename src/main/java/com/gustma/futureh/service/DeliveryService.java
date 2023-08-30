@@ -1,7 +1,6 @@
 package com.gustma.futureh.service;
 
 import com.gustma.futureh.dto.DeliveryDto;
-import com.gustma.futureh.dto.DroneDto;
 import com.gustma.futureh.dto.VideoDto;
 import com.gustma.futureh.model.Delivery;
 import com.gustma.futureh.model.Drone;

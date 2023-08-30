@@ -4,7 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.gustma.futureh.controller.DroneController;
@@ -63,7 +62,7 @@ public class DroneControllerTest {
     String droneAtt = "{\"model\": \"DDL-142\"}";
     mockMvc.perform(put("/drone/100")
         .contentType("application/json")
-        .content(drone))
+        .content(droneAtt))
         .andExpect(status().isNotFound());
   }
   
