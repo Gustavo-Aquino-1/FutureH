@@ -1,27 +1,9 @@
-#FROM openjdk:11.0-jdk as builder
-#WORKDIR /app
-#COPY . .
-#RUN ./mvnw clean package
+FROM maven:3.8-jdk-11
 
-#FROM openjdk:11.0-jre
-#WORKDIR /app
-#COPY --from=builder app/target/*.jar app.jar
-
-#EXPOSE 8080
-#ENTRYPOINT [ "java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar" ]
-
-FROM openjdk:11.0-jdk as builder
 WORKDIR /app
+
 COPY . .
-RUN ./mvnw clean package
 
-FROM openjdk:11.0-jre
-WORKDIR /app
-COPY --from=builder app/target/*.jar app.jar
+RUN mvn clean package -DskipTests
 
-# Adicione o comando wait-for-it.sh aqui
-COPY wait-for-it.sh wait-for-it.sh
-RUN chmod +x wait-for-it.sh
-
-# Espere pela disponibilidade do serviço de banco de dados
-CMD ["./wait-for-it.sh", "db:3306", "--", "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "target/futureh-0.0.1-SNAPSHOT.jar"]
