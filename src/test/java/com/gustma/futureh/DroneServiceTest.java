@@ -20,7 +20,7 @@ public class DroneServiceTest {
   
   @Test
   public void testCreateDrone() {
-    DroneDto droneDto = new DroneDto("YT8-9BN");
+    DroneDto droneDto = new DroneDto("YT8-9BN", "-23.550520", "-46.633308");
     boolean result = service.create(droneDto);
     assertTrue(result);
   }
@@ -33,14 +33,14 @@ public class DroneServiceTest {
   
   @Test
   public void updateDroneFail() {
-    DroneDto droneDto = new DroneDto("YYT-K26");
+    DroneDto droneDto = new DroneDto("YYT-K26", "-23.550520", "-46.633308");
     boolean result = service.update(1, droneDto);
     assertFalse(result);
   }
   
   @Test
   public void updateDrone() {
-    DroneDto droneDto = new DroneDto("YYT-K26");
+    DroneDto droneDto = new DroneDto("YYT-K26", "-23.550520", "-46.633308");
     boolean result = service.update(5, droneDto);
     assertTrue(result);
   }

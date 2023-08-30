@@ -26,6 +26,8 @@ public class DroneService {
   public boolean create(DroneDto drone) {
     Drone newDrone = new Drone();
     newDrone.setModel(drone.getModel());
+    newDrone.setLatitude(drone.getLatitude());
+    newDrone.setLongitude(drone.getLongitude());
     repo.save(newDrone);
     return true;
   }
@@ -41,6 +43,8 @@ public class DroneService {
     }
     Drone attDrone = findDrone.get();
     attDrone.setModel(drone.getModel());
+    attDrone.setLatitude(drone.getLatitude());
+    attDrone.setLongitude(drone.getLongitude());
     repo.save(attDrone);
     return true;
   }

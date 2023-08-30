@@ -35,7 +35,7 @@ public class DroneControllerTest {
   
   @Test
   public void testCreateDrone() throws Exception {
-    String drone = "{\"model\": \"KPC-338\"}";
+    String drone = "{\"model\": \"KPC-338\", \"latitude\": \"-23.4789\", \"longitude\": \"-45.2\"}";
     mockMvc.perform(post("/drone")
         .contentType("application/json")
         .content(drone))
@@ -53,23 +53,23 @@ public class DroneControllerTest {
   
   @Test
   public void testUpdateDroneFail() throws Exception {
-    String drone = "{\"model\": \"KPC-338\"}";
+    String drone = "{\"model\": \"KPC-338\", \"latitude\": \"-23.4789\", \"longitude\": \"-45.2\"}";
     mockMvc.perform(post("/drone")
         .contentType("application/json")
         .content(drone))
         .andExpect(status().isCreated());
         
-    String droneAtt = "{\"model\": \"DDL-142\"}";
+    String drone2 = "{\"model\": \"KPC-338\", \"latitude\": \"-23.478\", \"longitude\": \"-45.2\"}";
     mockMvc.perform(put("/drone/100")
         .contentType("application/json")
-        .content(droneAtt))
+        .content(drone2))
         .andExpect(status().isNotFound());
   }
   
   
   @Test
   public void testDeleteDroneFail() throws Exception {
-    String drone = "{\"model\": \"KPC-338\"}";
+    String drone = "{\"model\": \"KPC-338\", \"latitude\": \"-23.4789\", \"longitude\": \"-45.2\"}";
     mockMvc.perform(post("/drone")
         .contentType("application/json")
         .content(drone))

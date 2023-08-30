@@ -22,6 +22,10 @@ public class Drone {
   
   private String model;
   
+  private String latitude;
+  
+  private String longitude;
+  
   @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonIgnoreProperties("drone")
   private List<Delivery> deliveries = new ArrayList<Delivery>();
@@ -40,6 +44,15 @@ public class Drone {
   public Drone(Integer id, String model) {
     this.model = model;
   }
+  
+  /**
+   * constructor Drone all fields.
+   */
+  public Drone(String model, String latitude, String longitude) {
+    this.model = model;
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
 
   public Integer getId() {
     return id;
@@ -55,6 +68,22 @@ public class Drone {
 
   public void setModel(String model) {
     this.model = model;
+  }
+
+  public String getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
+  }
+
+  public String getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(String longitude) {
+    this.longitude = longitude;
   }
 
   public List<Delivery> getDeliveries() {
